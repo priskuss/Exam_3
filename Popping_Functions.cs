@@ -1,6 +1,5 @@
-public static class Functions
+public static class Popping_Functions
 {
-    const double PI = 3.14159;
     public static int Square(int number)
     {
         return number * number;
@@ -19,10 +18,10 @@ public static class Functions
     }
     public static double CircleArea(double radius)
     {
-        return PI * radius * radius;
+        return Math.PI * radius * radius;
     }
     public static string Greeting(string name)
     {
-        return "Hello, " + name;
+        return $"Hello, {name}";
     }
 }
