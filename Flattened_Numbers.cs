@@ -2,19 +2,27 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-public static class Flattened_Numbers
+public static class FlattenedNumbers
 {
     public static async Task<int[]> FetchAndFlattenArray()
     {
         HttpClient client = new HttpClient();
-        string response = await client.GetStringAsync("https://crismo-turquoisejaguar.web.val.run/arrayI");
-        JsonDocument doc = JsonDocument.Parse(response);
-        List<int> flattenedList = new List<int>();
-        FlattenJsonElement(doc.RootElement, flattenedList);
-        return flattenedList.ToArray();
+        try
+        {
+            string response = await client.GetStringAsync("https://crismo-turquoisejaguar.web.val.run/arrayI");
+            JsonDocument doc = JsonDocument.Parse(response);
+            List<int> flattenedList = new List<int>();
+            FlattenJsonElement(doc.RootElement, flattenedList);
+            return flattenedList.ToArray();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+            return Array.Empty<int>();
+        }
     }
 
-    private static void FlattenJsonElement(JsonElement element, List<int> flattenedList)
+    public static void FlattenJsonElement(JsonElement element, List<int> flattenedList)
     {
         switch (element.ValueKind)
         {
