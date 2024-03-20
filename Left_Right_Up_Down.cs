@@ -8,14 +8,23 @@ public class Node
     public Node right { get; set; }
 }
 
-public static class Left_Right_Up_Down
+public static class AwayWeGo
 {
     public static Node LoadNodes()
     {
-        string json_text = File.ReadAllText(@"./nodes.json");
-        var nodes = JsonSerializer.Deserialize<Node>(json_text);
-        return nodes;
+        try
+        {
+            string json_text = File.ReadAllText(@"./nodes.json");
+            var nodes = JsonSerializer.Deserialize<Node>(json_text);
+            return nodes;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+            return null;
+        }
     }
+
     public static int Sum(Node node)
     {
         if (node == null)
