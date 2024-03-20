@@ -9,14 +9,22 @@ public class Book
     public string author { get; set; }
     public string isbn { get; set; }
 }
-public static class My_Books
+public static class MyBooks
 {
     private static Book[] books;
 
-    static My_Books()
+    static MyBooks()
     {
-        string json_text = File.ReadAllText(@"./books.json");
-        books = JsonSerializer.Deserialize<Book[]>(json_text);
+        try
+        {
+            string json_text = File.ReadAllText(@"./books.json");
+            books = JsonSerializer.Deserialize<Book[]>(json_text);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+            books = new Book[0];
+        }
     }
 
     public static Book[] TheBooks()
