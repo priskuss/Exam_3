@@ -1,4 +1,4 @@
-public static class Popping_Functions
+public static class PoppingFunctions
 {
     public static int Square(int number)
     {
