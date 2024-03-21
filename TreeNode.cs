@@ -8,8 +8,9 @@ public class Node
     public Node right { get; set; }
 }
 
-public static class AwayWeGo
+public static class TreeNode
 {
+    /*
     public static Node LoadNodes()
     {
         try
@@ -22,6 +23,47 @@ public static class AwayWeGo
         {
             Console.WriteLine($"An error occurred: {ex.Message}");
             return null;
+        }
+    }
+*/
+    public static async Task<Node> LoadNodes()
+    {
+        HttpClient client = new HttpClient();
+        try
+        {
+            string response = await client.GetStringAsync("https://crismo-turquoisejaguar.web.val.run/treeI");
+            JsonDocument doc = JsonDocument.Parse(response);
+            Node rootNode = new Node();
+            BuildTree(doc.RootElement, rootNode);
+            return rootNode;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+            return null;
+        }
+    }
+    private static void BuildTree(JsonElement element, Node node)
+    {
+        if (element.ValueKind == JsonValueKind.Object)
+        {
+            foreach (JsonProperty property in element.EnumerateObject())
+            {
+                if (property.Name == "value")
+                {
+                    node.value = property.Value.GetInt32();
+                }
+                else if (property.Name == "left")
+                {
+                    node.left = new Node();
+                    BuildTree(property.Value, node.left);
+                }
+                else if (property.Name == "right")
+                {
+                    node.right = new Node();
+                    BuildTree(property.Value, node.right);
+                }
+            }
         }
     }
 
