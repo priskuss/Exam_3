@@ -11,7 +11,7 @@ public class Book
 }
 public static class MyBooks
 {
-    private static Book[] books;
+    public static Book[] books;
 
     static MyBooks()
     {
@@ -52,12 +52,12 @@ public static class MyBooks
         return books.Where(b => b.author == author).Select(b => b.isbn).ToArray();
     }
 
-    public static Book[] Alphabetical(bool ascending)
+    public static Book[] AlphabeticalOrder(bool ascending)
     {
         return ascending ? books.OrderBy(b => b.title).ToArray() : books.OrderByDescending(b => b.title).ToArray();
     }
 
-    public static Book[] Chronological(bool ascending)
+    public static Book[] ChronologicalOrder(bool ascending)
     {
         return ascending ? books.OrderBy(b => b.publication_year).ToArray() : books.OrderByDescending(b => b.publication_year).ToArray();
     }
