@@ -3,37 +3,37 @@ public static class Test
 
     public static void SquareTest()
     {
-        int result = PoppingFunctions.Square(5);
+        int result = PoppingFunctions.Square()(5);
         Console.WriteLine(result == 25 ? ":) SquareTest passed" : ":( SquareTest failed");
     }
 
     public static void InchesToMmTest()
     {
-        double result = PoppingFunctions.InchesToMm(10);
+        double result = PoppingFunctions.InchesToMm()(10);
         Console.WriteLine(Math.Abs(result - 254) < 0.001 ? ":) InchesToMmTest passed" : ":( InchesToMmTest failed");
     }
 
     public static void RootTest()
     {
-        double result = PoppingFunctions.Root(4);
+        double result = PoppingFunctions.Root()(4);
         Console.WriteLine(Math.Abs(result - 2) < 0.001 ? ":) RootTest passed" : ":(RootTest failed");
     }
 
     public static void CubeTest()
     {
-        int result = PoppingFunctions.Cube(3);
+        int result = PoppingFunctions.Cube()(3);
         Console.WriteLine(result == 27 ? ":) CubeTest passed" : ":( CubeTest failed");
     }
 
     public static void CircleAreaTest()
     {
-        double result = PoppingFunctions.CircleArea(10);
+        double result = PoppingFunctions.CircleArea()(10);
         Console.WriteLine(Math.Abs(result - 314.1592653589793) < 0.001 ? ":) CircleAreaTest passed" : ":( CircleAreaTest failed");
     }
 
     public static void GreetingTest()
     {
-        string result = PoppingFunctions.Greeting("Who");
+        string result = PoppingFunctions.Greeting()("Who");
         Console.WriteLine(result == "Hello, Who" ? ":) GreetingTest passed" : ":( GreetingTest failed");
     }
     public static void FlattenedNumbersTest()
