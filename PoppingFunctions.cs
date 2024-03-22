@@ -1,27 +1,47 @@
 public static class PoppingFunctions
 {
-    public static int Square(int number)
+    public static Func<int, int> Square()
     {
-        return number * number;
+        return number => number * number;
     }
-    public static double InchesToMm(double inches)
+
+    public static Func<double, double> InchesToMm()
     {
-        return inches * 25.4;
+        return inches => inches * 25.4;
     }
-    public static double Root(double number)
+
+    public static Func<double, double> Root()
     {
-        return Math.Sqrt(number);
+        return Math.Sqrt;
     }
-    public static int Cube(int number)
+
+    public static Func<int, int> Cube()
     {
-        return number * number * number;
+        return number => number * number * number;
     }
-    public static double CircleArea(double radius)
+
+    public static Func<double, double> CircleArea()
     {
-        return Math.PI * radius * radius;
+        return radius => Math.PI * radius * radius;
     }
-    public static string Greeting(string name)
+
+    public static Func<string, string> Greeting()
     {
-        return $"Hello, {name}";
+        return name => $"Hello, {name}";
+    }
+
+    public static int ApplyFunction(Func<int, int> function, int number)
+    {
+        return function(number);
+    }
+
+    public static double ApplyFunction(Func<double, double> function, double number)
+    {
+        return function(number);
+    }
+
+    public static string ApplyFunction(Func<string, string> function, string input)
+    {
+        return function(input);
     }
 }
