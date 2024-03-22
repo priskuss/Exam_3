@@ -7,7 +7,6 @@ public class Node
     public Node left { get; set; }
     public Node right { get; set; }
 }
-
 public static class TreeNode
 {
     public static async Task<Node> LoadNodes()
