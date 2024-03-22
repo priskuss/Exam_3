@@ -10,22 +10,6 @@ public class Node
 
 public static class TreeNode
 {
-    /*
-    public static Node LoadNodes()
-    {
-        try
-        {
-            string json_text = File.ReadAllText(@"./nodes.json");
-            var nodes = JsonSerializer.Deserialize<Node>(json_text);
-            return nodes;
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"An error occurred: {ex.Message}");
-            return null;
-        }
-    }
-*/
     public static async Task<Node> LoadNodes()
     {
         HttpClient client = new HttpClient();
